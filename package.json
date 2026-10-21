@@ -1,0 +1,18 @@
+{
+  "name": "kiddo-toy-mart",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.cjs",
+    "start": "node server.cjs",
+    "check": "node --check app.js",
+    "admin-key": "node admin-key.cjs",
+    "test": "node tests.cjs",
+    "firebase:build": "node scripts/build-firebase.cjs",
+    "firebase:test": "node --test functions/handler.test.js",
+    "supabase:test": "node supabase/schema.test.cjs && node --test supabase/adapter.test.cjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10"
+  }
+}

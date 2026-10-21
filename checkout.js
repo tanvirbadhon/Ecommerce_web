@@ -1,0 +1,26 @@
+window.renderCheckout = function(context) {
+  const {products,cart,money,photo,safeText,saveCart,getCartLines}=context;
+  const page=document.querySelector('#checkout-page');
+  const items=getCartLines();
+  if(!items.length){page.innerHTML='<div class="checkout-empty"><h1>Your bag is empty</h1><p>Find a new playtime favorite before checking out.</p><a class="primary" href="#collection">Continue shopping →</a></div>';return;}
+  const subtotal=items.reduce((sum,p)=>sum+Math.round(p.price*100)*p.quantity,0)/100;
+  const shipping=window.KIDDO_SETTINGS.shipping;
+  let requestId=crypto.randomUUID();
+  page.innerHTML=`<div class="checkout-heading"><a href="#collection">← Continue shopping</a><h1>Checkout</h1><p>Kiddo Toy Mart · Cash on delivery</p></div><div class="checkout-layout"><form id="checkout-form"><h2>Contact</h2><label>Email (optional)<input name="email" type="email" autocomplete="email" maxlength="254"></label><h2>Delivery</h2><label>Country / Region<input value="Bangladesh" readonly></label><label>Full name<input name="name" required maxlength="120" autocomplete="name"></label><label>Mobile number<input name="phone" type="tel" required maxlength="25" autocomplete="tel" placeholder="01XXXXXXXXX"></label><label>Street address<input name="address" required maxlength="500" autocomplete="street-address" placeholder="House, road, area"></label><div class="checkout-form-row"><label>City<input name="city" required maxlength="100" autocomplete="address-level2"></label><label>Postal code (optional)<input name="postalCode" maxlength="15" autocomplete="postal-code"></label></div><fieldset><legend>Shipping method</legend>${Object.entries(shipping).map(([key,value],i)=>`<label class="shipping-option"><input type="radio" name="shipping" value="${key}" ${i===0?'checked':''}><span>${safeText(value.label)}</span><strong>${money(value.price)}</strong></label>`).join('')}</fieldset><h2>Payment</h2><div class="cod-payment">Cash on Delivery (COD)<p>Pay the order total when your items are delivered. We will contact you to confirm availability.</p></div><label>Order notes (optional)<textarea name="notes" maxlength="1000" rows="3" placeholder="Delivery instructions or questions"></textarea></label><p class="checkout-privacy">Your contact and delivery details are used to process this order. For help, call +880 1610-288554.</p><p id="checkout-error" role="alert"></p><button class="place-order" type="submit">Place order · <span id="button-total"></span></button></form><aside class="checkout-summary"><h2>Your order</h2>${items.map(p=>`<div class="checkout-item"><div><img src="${photo(p)}" alt="${safeText(p.name)}"><span>${p.quantity}</span></div><p>${safeText(p.name)}<small>Quantity: ${p.quantity}${p.color?` · Color: ${safeText(p.color)}`:''}</small></p><strong>${money(Math.round(p.price*100)*p.quantity/100)}</strong></div>`).join('')}<dl><dt>Subtotal</dt><dd>${money(subtotal)}</dd><dt>Shipping</dt><dd id="checkout-shipping"></dd><dt class="total-label">Total</dt><dd class="total-value" id="checkout-total"></dd></dl><p>Need help? <a href="tel:+8801610288554">+880 1610-288554</a></p></aside></div>`;
+  const form=document.querySelector('#checkout-form');
+  function totals(){const method=new FormData(form).get('shipping');const fee=shipping[method].price;document.querySelector('#checkout-shipping').textContent=money(fee);document.querySelector('#checkout-total').textContent=money(Math.round((subtotal+fee)*100)/100);document.querySelector('#button-total').textContent=money(Math.round((subtotal+fee)*100)/100);return {method,total:Math.round((subtotal+fee)*100)/100};}
+  form.addEventListener('change',totals);totals();
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();if(!form.reportValidity())return;
+    const button=form.querySelector('button[type="submit"]'),error=document.querySelector('#checkout-error');button.disabled=true;error.textContent='';
+    try {
+      const values=Object.fromEntries(new FormData(form)),selected=totals();
+      const response=await window.KiddoAPI.fetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId,customer:values,shipping:selected.method,items:items.map(p=>({id:p.id,quantity:p.quantity,color:p.color})),expectedTotal:selected.total})});
+      const order=await response.json();if(!response.ok)throw new Error(order.error||'Your order could not be saved.');
+      // Clear only the quantities submitted, preserving items added in another view.
+      for(const p of items){cart[p.key]=Math.max(0,(cart[p.key]||0)-p.quantity);if(!cart[p.key])delete cart[p.key];}saveCart();
+      page.innerHTML=`<div class="order-success"><div class="success-check">✓</div><h1>Thank you for your order!</h1><p>Your order number is <strong>${safeText(order.id)}</strong>.</p><p>Total: <strong>${money(order.total)}</strong> · Cash on delivery</p><p>Your order is awaiting stock and delivery confirmation. Please keep this order number for your records.</p><a class="primary" href="#collection">Continue shopping →</a><p><a href="tel:+8801610288554">Questions? Call +880 1610-288554</a></p></div>`;
+      window.scrollTo(0,0);
+    }catch(failure){error.textContent=failure.message||'Could not connect. Please try again.';button.disabled=false;}
+  });
+};

@@ -1,0 +1,20 @@
+.data/
+node_modules/
+*.log
+
+.kiddo-test-*/
+
+firebase-public/
+.firebase/
+functions/.env
+functions/.env.*
+!functions/.env.example
+*service-account*.json
+*serviceAccount*.json
+
+# Private environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,155 @@
+[
+  {
+    "id": 301,
+    "name": "Inflatable Baby Bathtub",
+    "category": "Toys",
+    "description": "Inflatable yellow bathtub.",
+    "price": 2990,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S3f9b1d13cf664616b0447a090c936753I.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 302,
+    "name": "Beach & Sand Toy Set",
+    "category": "Toys",
+    "description": "Outdoor sand digging and water play toys.",
+    "price": 1490,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S919dbd3524f349aa89af65d9c9646dc4L.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 303,
+    "name": "Montessori Busy Board",
+    "category": "Learning",
+    "description": "Activity board for hands-on exploration.",
+    "price": 1490,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S074ba70bb61c43a38c2d30205c23c1b83.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 305,
+    "name": "Montessori Busy Cube",
+    "category": "Learning",
+    "description": "A cube of little activities to discover.",
+    "price": 1709.35,
+    "image": "https://toysmartbd.shop/cdn/shop/files/Sa5d412ba85df49bfacc3d3888e51da6dy.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 306,
+    "name": "Swimming Float with Canopy",
+    "category": "Toys",
+    "description": "Inflatable float with a sun canopy.",
+    "price": 2990,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S7c2fa868622a404e99ae0bfbf787d3aeD.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 307,
+    "name": "3-in-1 Diaper Backpack",
+    "category": "Bags",
+    "description": "Diaper bag with foldable changing station.",
+    "price": 2990,
+    "image": "https://toysmartbd.shop/cdn/shop/files/Sbc289e691ee648eeac79b90e00589f94Z.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 308,
+    "name": "Dinosaur Kids Backpack — Green",
+    "category": "Bags",
+    "description": "Cartoon dinosaur kindergarten backpack.",
+    "price": 1890,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S6584c911e91b40d792666b24397695da7.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 309,
+    "name": "Dinosaur Kids Backpack — Style 2",
+    "category": "Bags",
+    "description": "A playful backpack for little adventures.",
+    "price": 1790,
+    "image": "https://toysmartbd.shop/cdn/shop/files/Sa7f48393e8e6483bbc3211d39d8cd7aed.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 310,
+    "name": "Multi-function Mommy Bag",
+    "category": "Bags",
+    "description": "Large travel bag with bottle holder.",
+    "price": 2290,
+    "image": "https://toysmartbd.shop/cdn/shop/files/Sb4f4fa09163b45d194c73addd55fb030Q.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 311,
+    "name": "Color-block Kids Backpack",
+    "category": "Bags",
+    "description": "Roomy children’s kindergarten backpack.",
+    "price": 3390,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S7a1512095dad44c7a904160b958e6694c.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 312,
+    "name": "Mini Doll Backpack",
+    "category": "Bags",
+    "description": "Small zip backpack for pretend play.",
+    "price": 1390,
+    "image": "https://toysmartbd.shop/cdn/shop/files/S009ead2992d740e8add3927a48720afal.webp?width=600",
+    "badge": ""
+  },
+  {
+    "id": 201,
+    "name": "Plastic Racing Car",
+    "category": "Cars",
+    "description": "A colorful little car for imaginary races.",
+    "price": 250,
+    "image": "car",
+    "badge": "RACE & PLAY"
+  },
+  {
+    "id": 202,
+    "name": "Plastic Toy Cycle",
+    "category": "Cycles",
+    "description": "A miniature cycle for make-believe adventures.",
+    "price": 180,
+    "image": "cycle",
+    "badge": "MINI TOY"
+  },
+  {
+    "id": 203,
+    "name": "Plastic Mini Truck",
+    "category": "Vehicles",
+    "description": "Load up little stories and head out to play.",
+    "price": 350,
+    "image": "truck",
+    "badge": "NEW ARRIVAL"
+  },
+  {
+    "id": 204,
+    "name": "Plastic City Car",
+    "category": "Cars",
+    "description": "Big city adventures in a little toy car.",
+    "price": 220,
+    "image": "citycar",
+    "badge": ""
+  },
+  {
+    "id": 205,
+    "name": "Plastic Sport Cycle",
+    "category": "Cycles",
+    "description": "A sporty miniature for a world of pretend play.",
+    "price": 200,
+    "image": "sportcycle",
+    "badge": "MINI TOY"
+  },
+  {
+    "id": 206,
+    "name": "Plastic Toy Bus",
+    "category": "Vehicles",
+    "description": "All aboard for the next pretend journey.",
+    "price": 390,
+    "image": "bus",
+    "badge": ""
+  }
+]

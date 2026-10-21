@@ -1,0 +1,7 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // The backend validates and uploads product images. Private files have no public rules.
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
